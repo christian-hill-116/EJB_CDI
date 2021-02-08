@@ -8,8 +8,8 @@ import javax.validation.constraints.Size;
 
 @Named @ViewScoped @ManagedBean @NotNull @Size(min = 5, max = 15)
 public class User {
-	public String firstName;
-	public String lastName;
+	public String firstName = " ";
+	public String lastName = " ";
 	
 	public User() {
 		firstName = "Christian";

@@ -27,7 +27,7 @@
 		<p>Hello #{user.firstName} #{user.lastName}. Your Orders are: </p>
 		
 		
-		<h:dataTable value="#{orders.orders}" var="o" styleClass="order-table" headerClass="order-table-header" 
+		<h:dataTable value="#{formController.service.orders}" var="o" styleClass="order-table" headerClass="order-table-header" 
 		rowClasses="order-table-odd, order-table-even" >
 			<h:column>
 				<f:facet name="header">Order Number</f:facet>

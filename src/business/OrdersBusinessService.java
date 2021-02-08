@@ -1,17 +1,29 @@
-package beans;
+package business;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.inject.Named;
+import javax.ejb.Local;
+import javax.ejb.Stateless;
+import javax.enterprise.inject.Alternative;
 
-@ManagedBean @Named
-public class Orders {
-	
+import beans.Order;
+
+@Stateless
+@Local(OrdersBusinessInterface.class)
+@Alternative
+public class OrdersBusinessService implements OrdersBusinessInterface {
+
 	List<Order> orders = new ArrayList<Order>();
 	
-	public Orders() {
+	@Override
+	public void test() {
+		System.out.println("=========Hello from the test method. Order Business Service Version #1");
+
+	}
+	
+	public OrdersBusinessService() {
+		
 		orders.add(new Order("00000001", "This is product 1", (float)11.00, 1));
 		orders.add(new Order("00000002", "This is product 2", (float)12.00, 12));
 		orders.add(new Order("00000003", "This is product 3", (float)13.00, 13));
@@ -26,15 +38,20 @@ public class Orders {
 		orders.add(new Order("00000012", "This is product 12", (float)112.00, 112));
 		orders.add(new Order("00000013", "This is product 13", (float)113.00, 113));
 		orders.add(new Order("00000014", "This is product 14", (float)114.00, 114));
+		
 	}
 
+	@Override
 	public List<Order> getOrders() {
+		// TODO Auto-generated method stub
 		return orders;
 	}
 
+	@Override
 	public void setOrders(List<Order> orders) {
+		// TODO Auto-generated method stub
 		this.orders = orders;
+		
 	}
-	
 
 }
